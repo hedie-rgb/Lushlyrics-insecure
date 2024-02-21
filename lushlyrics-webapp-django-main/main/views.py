@@ -14,13 +14,16 @@ import json
 f = open('card.json', 'r')
 CONTAINER = json.load(f)
 
+def restricted(request):
+  return render(request, 'restricted.html')
+
 def login(request):
   return render(request, 'login.html')
 
 def signup(request):
   return render(request, 'signup.html')
 
-@login_required(login_url='login/')
+@login_required(login_url='restricted')
 def default(request):
     global CONTAINER
 
